@@ -5,6 +5,7 @@ urlpatterns = [
     
     
     path('login/' , views.CustomLoginView.as_view(), name = 'login' ),
+    path('register/' , views.Register.as_view(), name = 'register'),
     path('logout/', LogoutView.as_view(next_page = 'login'), name='logout'),
     path('', views.TaskList.as_view(), name = 'tasks'),
     path('task/<int:pk>/', views.TaskDetail.as_view(), name = 'task'),
