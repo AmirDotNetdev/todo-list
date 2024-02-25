@@ -1,3 +1,8 @@
+{% extends "base/main.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
 
 {% if request.user.is_authenticated %}
     {{ reqeust.user }}
@@ -5,13 +10,18 @@
         {% csrf_token %}
         <button type="submit">logout</button>
     </form>
-{% else %}
 {% endif %}
 
 <br>
 
 <h1>My todo list</h1>
 <a href="{% url 'create' %}">Add list</a>
+
+
+<form method = "get" action = "{% url 'tasks' %}">
+    <input type = "text" value = "{{input_search}}" name = "input_search">
+    <input type = "submit" value = "search">
+</form>
 <table>
 
     <tr>
@@ -36,3 +46,8 @@
     <h3>List is empty</h3>
     {% endfor %}
 </table>
+{% endblock content %}
+
+
+
+

@@ -21,6 +21,13 @@ class TaskList(LoginRequiredMixin ,ListView):
         context['tasks'] = context['tasks'].filter(user = self.request.user)
         context['count'] = context['tasks'].filter(complete = False).count()
         
+        input = self.request.GET.get('input_search') or ''
+        
+        if input:
+            context['tasks'] = context['tasks'].filter(title__icontains = input)
+            
+            context['input_search'] = input
+        
         return context
 
 class Register(FormView):
