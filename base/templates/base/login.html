@@ -5,17 +5,21 @@
 
 {% block content %}
 
+<div class="header-bar">
+    <h2>Login</h2>
+</div>
+<div class="card-body">
+    <form action="." method="post">
+        {% csrf_token %}
+    
+        {{ form.as_p }}
+    
+        <input class = "button" type="submit" value="Login">
+    </form>
+    
+    <p> Havent register yet?   <a href = "{% url 'register' %}">Register</a></p>
+</div>
 
-<form action="." method="post">
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <input type="submit" value="Login">
-</form>
-
-<p> Havent register yet?   <a href = "{% url 'register' %}">Register</a>
-</p>
 {% endblock content %}
 
 
